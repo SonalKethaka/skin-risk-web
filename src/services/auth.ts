@@ -26,9 +26,20 @@ export async function loginWithEmail(
   return cred.user;
 }
 
-export async function loginWithGoogle(): Promise<User> {
-  const cred = await signInWithPopup(auth, googleProvider);
-  return cred.user;
+export async function loginWithGoogle(): Promise<User | null> {
+  try {
+    const cred = await signInWithPopup(auth, googleProvider);
+    return cred.user;
+  } catch (error: any) {
+    if (
+      error?.code === "auth/cancelled-popup-request" ||
+      error?.code === "auth/popup-closed-by-user"
+    ) {
+      // user cancelled or another popup interrupted; treat as "no login"
+      return null;
+    }
+    throw error;
+  }
 }
 
 export async function logout() {

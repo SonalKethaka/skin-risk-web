@@ -30,7 +30,7 @@ export default function LogInForm() {
 
     try {
       await loginWithEmail(email, password);
-      router.push("/"); // go to home after login
+      router.push("/main/home"); // go to home after login
     } catch (err: any) {
       console.error(err);
       setError(err?.message ?? "Failed to log in.");
@@ -44,7 +44,7 @@ export default function LogInForm() {
     setLoading(true);
     try {
       await loginWithGoogle();
-      router.push("/");
+      router.push("/main/home");
     } catch (err: any) {
       console.error(err);
       setError(err?.message ?? "Google sign in failed.");

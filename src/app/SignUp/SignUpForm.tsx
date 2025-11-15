@@ -30,7 +30,7 @@ export default function SignupForm() {
 
     try {
       await signUpWithEmail(email, password);
-      router.push("/"); // go to home after sign up
+      router.push("/main/home"); // go to home after sign up
     } catch (err: any) {
       console.error(err);
       setError(err?.message ?? "Failed to sign up.");
@@ -44,7 +44,7 @@ export default function SignupForm() {
     setLoading(true);
     try {
       await loginWithGoogle();
-      router.push("/");
+      router.push("/main/home");
     } catch (err: any) {
       console.error(err);
       setError(err?.message ?? "Google sign in failed.");

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@heroui/react";
 import { cn } from "@/lib/utils";
 
-const FINISH_PATH = "/signup";
+const FINISH_PATH = "/SignUp";
 
 type Slide = {
   id: number;
